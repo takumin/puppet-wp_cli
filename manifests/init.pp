@@ -9,7 +9,6 @@
 #
 class wp_cli (
   $package_name = $::wp_cli::params::package_name,
-  $service_name = $::wp_cli::params::service_name,
 ) inherits ::wp_cli::params {
 
   # validate parameters here
@@ -23,6 +22,5 @@ class wp_cli (
 
   class { '::wp_cli::install': } ->
   class { '::wp_cli::config': } ~>
-  class { '::wp_cli::service': } ->
   Class['::wp_cli']
 }

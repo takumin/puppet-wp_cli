@@ -5,13 +5,11 @@
 #
 class wp_cli::params {
   case $::osfamily {
-    'Debian': {
-      $package_name = 'wp_cli'
-      $service_name = 'wp_cli'
+    'Debian', 'RedHat', 'Amazon': {
+      $package_name = 'wp-cli'
     }
-    'RedHat', 'Amazon': {
-      $package_name = 'wp_cli'
-      $service_name = 'wp_cli'
+    'FreeBSD': {
+      $package_name = 'www/php-wp-cli'
     }
     default: {
       fail("${::operatingsystem} not supported")
